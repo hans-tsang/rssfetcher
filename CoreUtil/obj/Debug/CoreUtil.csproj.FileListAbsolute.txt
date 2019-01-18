@@ -1,0 +1,12 @@
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\bin\Debug\CoreUtil.dll
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\bin\Debug\CoreUtil.pdb
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\bin\Debug\System.Net.Http.dll
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\bin\Debug\System.Net.Http.xml
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\obj\Debug\CoreUtil.dll
+C:\Users\Hans.tsang\Desktop\ZTAMPZ_EMAIL_SWF\CoreUtil\obj\Debug\CoreUtil.pdb
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\CoreUtil.dll
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\CoreUtil.pdb
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\System.Net.Http.dll
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\System.Net.Http.xml
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\obj\Debug\CoreUtil.dll
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\obj\Debug\CoreUtil.pdb
