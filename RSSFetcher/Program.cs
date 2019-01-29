@@ -13,40 +13,31 @@ namespace RSSFetcher
     {
         public static void Main(string[] args)
         {
-            string url = "https://hk.jobsdb.com/HK/en/Rss/JobListing?jobFunctionId=131";
-            XmlReader reader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(reader);
-            reader.Close();
-            foreach (SyndicationItem item in feed.Items)
-            {
-                String ID = item.Id;
-                String subject = item.Title.Text;
-                String summary = item.Summary.Text;
-                String links = item.Links[0].Uri.OriginalString;
-                DateTime publishDate = item.PublishDate.LocalDateTime;
-                //Console.WriteLine(ID);
-                //Console.WriteLine(subject);
-                //Console.WriteLine(summary);
-                //Console.WriteLine(links);
-                //Console.WriteLine(publishDate);
-
-                SQLiteConnection m_dbConnection;
-                m_dbConnection = new SQLiteConnection("Data Source=./rss.db;Version=3;");
-                m_dbConnection.Open();
-                string sql = "insert or replace into JOBS (ID, SUBJECT, SUMMARY, LINK, PUBLISHDATE) values (?,?,?,?,?)";
-                var command = new SQLiteCommand(sql, m_dbConnection);
-                command.Parameters.AddWithValue("ID", ID);
-                command.Parameters.AddWithValue("subject", subject);
-                command.Parameters.AddWithValue("summary", summary);
-                command.Parameters.AddWithValue("links", links);
-                command.Parameters.AddWithValue("publishDate", publishDate);
-                command.ExecuteNonQuery();
-            }
-            //while (true)
-            //{
-            //    Console.ReadKey();
-            //}
-            //Console.ReadKey();
+            Jobs.Fetch("2", "Accounting");
+            Jobs.Fetch("15", "Admin & HR");
+            Jobs.Fetch("37", "Banking / Finance");
+            Jobs.Fetch("113", "Beauty Care / Health");
+            Jobs.Fetch("55", "Building & Construction");
+            Jobs.Fetch("70", "Design");
+            Jobs.Fetch("300", "E-commerce");
+            Jobs.Fetch("80", "Education");
+            Jobs.Fetch("89", "Engineering");
+            Jobs.Fetch("118", "Hospitality / F & B");
+            Jobs.Fetch("131", "Information Technology(IT)");
+            Jobs.Fetch("151", "Insurance");
+            Jobs.Fetch("284", "Management");
+            Jobs.Fetch("169", "Manufacturing");
+            Jobs.Fetch("175", "Marketing / Public Relations");
+            Jobs.Fetch("22", "Media & Advertising");
+            Jobs.Fetch("193", "Medical Services");
+            Jobs.Fetch("201", "Merchandising & Purchasing");
+            Jobs.Fetch("285", "Professional Services");
+            Jobs.Fetch("226", "Property / Real Estate");
+            Jobs.Fetch("282", "Public / Civil");
+            Jobs.Fetch("233", "Sales, CS & Business Devpt");
+            Jobs.Fetch("283", "Sciences, Lab, R&D");
+            Jobs.Fetch("265", "Transportation & Logistics");
+            Jobs.Fetch("272", "Others");
         }
     }
 }
