@@ -22,6 +22,8 @@ namespace RSSFetcher
                 String ID = item.Id;
                 String subject = item.Title.Text;
                 String summary = item.Summary.Text;
+                summary = summary.Replace("<html><body>", "");
+                summary = summary.Replace("</body></html>", "");
                 String links = item.Links[0].Uri.OriginalString;
                 DateTime publishDate = item.PublishDate.LocalDateTime;
                 SQLiteConnection m_dbConnection;
