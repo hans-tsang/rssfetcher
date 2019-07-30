@@ -8,5 +8,6 @@ C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\CoreUtil.dll
 C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\CoreUtil.pdb
 C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\System.Net.Http.dll
 C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\bin\Debug\System.Net.Http.xml
+C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\obj\Debug\CoreUtil.csprojResolveAssemblyReference.cache
 C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\obj\Debug\CoreUtil.dll
 C:\Users\Hans.tsang\Desktop\RSSFetcher\CoreUtil\obj\Debug\CoreUtil.pdb
