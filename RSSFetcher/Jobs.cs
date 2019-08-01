@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel.Syndication;
-using System.Xml;
 using System.Data.SQLite;
 using System.IO;
+using System.Linq;
+using System.ServiceModel.Syndication;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
 
 namespace RSSFetcher
 {
@@ -14,40 +14,33 @@ namespace RSSFetcher
     {
         public static void Fetch(string jobFunctionId, string jobCategory)
         {
-            // Prepare the database
-            const string sampleDbPath = "sampledb/rss.db";
-            const string dbPath = "./rss.db";
-
-            if (!File.Exists(dbPath))
+            using (RSSDatabase rssDb = new RSSDatabase())
             {
-                File.Copy(sampleDbPath, dbPath);
-            }
+                try
+                {
+                    string url = "https://hk.jobsdb.com/HK/en/Rss/JobListing?jobFunctionId=" + jobFunctionId;
+                    using (XmlReader reader = XmlReader.Create(url))
+                    {
+                        SyndicationFeed feed = SyndicationFeed.Load(reader);
 
-            string url = "https://hk.jobsdb.com/HK/en/Rss/JobListing?jobFunctionId="+ jobFunctionId;
-            XmlReader reader = XmlReader.Create(url);
-            SyndicationFeed feed = SyndicationFeed.Load(reader);
-            reader.Close();
-            foreach (SyndicationItem item in feed.Items)
-            {
-                String ID = item.Id;
-                String subject = item.Title.Text;
-                String summary = item.Summary.Text;
-                summary = summary.Replace("<html><body>", "");
-                summary = summary.Replace("</body></html>", "");
-                String links = item.Links[0].Uri.OriginalString;
-                DateTime publishDate = item.PublishDate.LocalDateTime;
-                SQLiteConnection m_dbConnection;
-                m_dbConnection = new SQLiteConnection("Data Source=./rss.db;Version=3;");
-                m_dbConnection.Open();
-                string sql = "insert or replace into JOBS (ID, SUBJECT, SUMMARY, LINK, PUBLISHDATE, CATEGORY) values (?,?,?,?,?,?)";
-                var command = new SQLiteCommand(sql, m_dbConnection);
-                command.Parameters.AddWithValue("ID", ID);
-                command.Parameters.AddWithValue("subject", subject);
-                command.Parameters.AddWithValue("summary", summary);
-                command.Parameters.AddWithValue("links", links);
-                command.Parameters.AddWithValue("publishDate", publishDate);
-                command.Parameters.AddWithValue("category", jobCategory);
-                command.ExecuteNonQuery();
+                        foreach (SyndicationItem item in feed.Items)
+                        {
+                            RSSRecord record = new RSSRecord()
+                            {
+                                ID = item.Id,
+                                Subject = item.Title.Text,
+                                Summary = item.Summary.Text.Replace("<html><body>", "").Replace("</body></html>", ""),
+                                Links = item.Links[0].Uri.OriginalString,
+                                PublishDate = item.PublishDate.LocalDateTime
+                            };
+                            rssDb.InsertRSSRecord(record);
+                        }
+                    }
+                }
+                catch (System.Net.WebException ex)
+                {
+                    Console.WriteLine("Error: " + ex.StackTrace);
+                }
             }
         }
     }
