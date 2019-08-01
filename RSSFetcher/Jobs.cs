@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ServiceModel.Syndication;
 using System.Xml;
 using System.Data.SQLite;
+using System.IO;
 
 namespace RSSFetcher
 {
@@ -13,6 +14,15 @@ namespace RSSFetcher
     {
         public static void Fetch(string jobFunctionId, string jobCategory)
         {
+            // Prepare the database
+            const string sampleDbPath = "sampledb/rss.db";
+            const string dbPath = "./rss.db";
+
+            if (!File.Exists(dbPath))
+            {
+                File.Copy(sampleDbPath, dbPath);
+            }
+
             string url = "https://hk.jobsdb.com/HK/en/Rss/JobListing?jobFunctionId="+ jobFunctionId;
             XmlReader reader = XmlReader.Create(url);
             SyndicationFeed feed = SyndicationFeed.Load(reader);
