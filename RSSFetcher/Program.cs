@@ -13,6 +13,7 @@ namespace RSSFetcher
     {
         public static void Main(string[] args)
         {
+            Console.WriteLine("Fetching Jobs....");
             Jobs.Fetch("2", "Accounting");
             Jobs.Fetch("15", "Admin & HR");
             Jobs.Fetch("37", "Banking / Finance");
@@ -38,6 +39,7 @@ namespace RSSFetcher
             Jobs.Fetch("283", "Sciences, Lab, R&D");
             Jobs.Fetch("265", "Transportation & Logistics");
             Jobs.Fetch("272", "Others");
+            Console.WriteLine("Done");
         }
     }
 }
