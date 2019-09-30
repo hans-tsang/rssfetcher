@@ -10,17 +10,17 @@ namespace RSSFetcher
 {
     class RSSRecord
     {
-        public string ID { get; set; }
+        public string? ID { get; set; }
 
-        public string Subject { get; set; }
+        public string? Subject { get; set; }
 
-        public string Summary { get; set; }
+        public string? Summary { get; set; }
 
-        public string Links { get; set; }
+        public string? Links { get; set; }
 
         public DateTime PublishDate { get; set; }
 
-        public string JobCategory { get; set; }
+        public string? JobCategory { get; set; }
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ namespace RSSFetcher
     /// </summary>
     class RSSDatabase : IDisposable
     {
-        private SQLiteConnection m_dbConnection;
+        private SQLiteConnection? m_dbConnection;
 
         public RSSDatabase()
         {
@@ -67,7 +67,7 @@ namespace RSSFetcher
 
         public void Dispose()
         {
-            m_dbConnection.Close();
+            m_dbConnection?.Close();
         }
 
         /// <summary>
