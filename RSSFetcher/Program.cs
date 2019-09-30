@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ServiceModel.Syndication;
-using System.Xml;
-using System.Data.SQLite;
 
 namespace RSSFetcher
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Fetching Jobs....");
             Jobs.Fetch("2", "Accounting");
